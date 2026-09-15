@@ -6,6 +6,7 @@ const cors = require('cors');
 const sequelize = require('./config/database');
 const productRoutes = require('./routes/ProductRoutes');
 const authRoutes = require('./routes/AuthRoutes');
+const categoryRoutes = require('./routes/CategoryRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -26,6 +27,9 @@ app.use('/api/products', productRoutes);
 
 // Routes d'authentification
 app.use('/api/auth', authRoutes);
+
+// Routes de catégories
+app.use('/api/categories', categoryRoutes);
 
 // Connexion à la base de données puis démarrage du serveur
 sequelize.authenticate()
