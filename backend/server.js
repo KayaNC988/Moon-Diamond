@@ -7,6 +7,7 @@ const sequelize = require('./config/database');
 const productRoutes = require('./routes/ProductRoutes');
 const authRoutes = require('./routes/AuthRoutes');
 const categoryRoutes = require('./routes/CategoryRoutes');
+const orderRoutes = require('./routes/OrderRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -30,6 +31,9 @@ app.use('/api/auth', authRoutes);
 
 // Routes de catégories
 app.use('/api/categories', categoryRoutes);
+
+// Routes de commandes
+app.use('/api/orders', orderRoutes);
 
 // Connexion à la base de données puis démarrage du serveur
 sequelize.authenticate()
