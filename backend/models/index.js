@@ -2,6 +2,7 @@ const User = require('./user');
 const Product = require('./product');
 const Order = require('./order');
 const OrderItem = require('./orderItem');
+const ProductImage = require('./productImage');
 
 // Un utilisateur peut avoir plusieurs commandes
 User.hasMany(Order, {
@@ -36,9 +37,21 @@ OrderItem.belongsTo(Product, {
     as: 'product'
 });
 
+// Un produit peut avoir plusieurs images
+Product.hasMany(ProductImage, {
+    foreignKey: 'product_id',
+    as: 'images'
+});
+
+ProductImage.belongsTo(Product, {
+    foreignKey: 'product_id',
+    as: 'product'
+});
+
 module.exports = {
     User,
     Product,
     Order,
-    OrderItem
+    OrderItem,
+    ProductImage
 };

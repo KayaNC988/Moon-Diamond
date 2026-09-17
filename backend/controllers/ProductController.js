@@ -1,9 +1,11 @@
-const Product = require('../models/product');
+const { Product, ProductImage }= require('../models');
 
 // Récupérer tous les produits
 const getAllProducts = async (req, res) => {
     try {
-        const products = await Product.findAll();
+        const products = await Product.findAll({ 
+            include: [{ model: ProductImage, as: 'images' }]
+        });
         res.status(200).json(products);
     } catch (error) {
         console.error(error);
@@ -13,7 +15,9 @@ const getAllProducts = async (req, res) => {
 
 const getProductById = async (req, res) => {
     try {
-        const product = await Product.findByPk(req.params.id);
+        const product = await Product.findByPk(req.params.id, {
+            include: [{ model: ProductImage, as: 'images' }]
+        });
 
         if (!product) {
             return res.status(404).json({ error: 'Produit non trouvé' });

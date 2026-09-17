@@ -1,7 +1,9 @@
 const { Order, OrderItem, Product } = require('../models');
+const sequelize = require('../config/database');
 
 // Création d'une commande
 const createOrder = async (req, res) => {
+    const transaction = await sequelize.transaction();
     try {
         const {
             shipping_firstname,
@@ -12,6 +14,7 @@ const createOrder = async (req, res) => {
             shipping_country,
             items
         } = req.body;
+
 
         // Vérification des informations de livraison
         if (
@@ -29,6 +32,7 @@ const createOrder = async (req, res) => {
 
         // Vérification du panier
         if (!Array.isArray(items) || items.length === 0) {
+            await transaction.rollback();
             return res.status(400).json({
                 error: 'La commande doit contenir au moins un produit'
             });
@@ -42,6 +46,7 @@ for (const item of items) {
 
     // Vérification de la quantité
     if (!product_id || !Number.isInteger(quantity) || quantity < 1) {
+        await transaction.rollback();
         return res.status(400).json({
             error: 'Produit ou quantité invalide'
         });
@@ -58,6 +63,7 @@ for (const item of items) {
 
     // Vérification du stock disponible
     if (product.stock < quantity) {
+        await transaction.rollback();
         return res.status(400).json({
             error: `Stock insuffisant pour le produit ${product.name}`
         });
@@ -78,8 +84,7 @@ const order = await Order.create({
     shipping_city,
     shipping_country,
     user_id: req.user.id
-});
-    
+}, { transaction });
 
 // Création des lignes de commande
 for (const item of items) {
@@ -90,15 +95,15 @@ for (const item of items) {
         unit_price: product.price, // Utilisation du prix enregistré dans la BDD
         order_id: order.id,
         product_id: item.product_id
-    });
+    }, { transaction });
 
     // Mise à jour du stock du produit
     await product.update({
         stock: product.stock - item.quantity
-    });
+    }, { transaction });
 
 }
-
+await transaction.commit();
         return res.status(201).json({
             message: 'Commande créée avec succès',
             order_id: order.id,
@@ -106,6 +111,7 @@ for (const item of items) {
         });
 
     } catch (error) {
+        await transaction.rollback();
         console.error(error);
 
         return res.status(500).json({
