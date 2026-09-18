@@ -1,0 +1,40 @@
+.brand-logo {
+  width: 220px;
+  height: auto;
+  display: block;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 60px;
+
+  background: linear-gradient(
+    135deg,
+    #f7e9ff,
+    #fce8f3
+  );
+}
+
+.header-logo h1 {
+  color: #7c3aed;
+  font-size: 32px;
+}
+
+.header-logo p {
+  color: #c0569a;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.navbar {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar a {
+  color: #4c3a69;
+  font-weight: 600;
+}
