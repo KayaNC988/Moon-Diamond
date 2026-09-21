@@ -22,10 +22,23 @@ function App() {
       </nav>
     </header>
     <main>
+      <section className='hero'>
+        <div className='hero-content'>
+          <h1>Entrez dans l'univers du Diamond Painting</h1>
+
+          <p>Des créations étincelantes pour donner vie à chaque diamant.</p>
+
+          <a href="#" className='hero-button'>Découvrir nos toiles</a>
+        </div>
+
+        <div className='hero-image'>
+          <img src="/images/hero-diamond-painting.jpg" 
+          alt="Création de diamond painting" />
+        </div>
+      </section>
 
     </main>
     </>
   )
-}
-
+  }
 export default App
