@@ -1,4 +1,5 @@
 import './App.css'
+import { Heart, UserRound, ShoppingBag } from 'lucide-react'
 
 function App() {
   return (
@@ -14,12 +15,28 @@ function App() {
 
       <nav className='navbar'>
   
-          <li><a href="#">Accueil</a></li>
-          <li><a href="#">Nos toiles</a></li>
-          <li><a href="#">À propos</a></li>
-          <li><a href="#">Contact</a></li>
+          <a href="#">Accueil</a>
+          <a href="#">Boutique</a>
+          <a href="#">Nos créations</a>
+          <a href="#">A propos</a>
+          <a href="#">Contact</a>
        
       </nav>
+
+      <div className='header-actions'>
+
+        <button className='icon-button'aria-label="Mes favoris">
+          <Heart size={21} />
+        </button>
+        <button className='icon-button' aria-label="Mon compte">
+          <UserRound size={21} />
+        </button>
+         <button className='icon-button cart-button' aria-label='Mon panier'>
+          <ShoppingBag size={21} />
+          <span className='cart-count'>0</span>
+         </button>
+         
+      </div>
     </header>
     <main>
       <section className='hero'>

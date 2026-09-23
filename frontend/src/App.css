@@ -1,12 +1,12 @@
 .brand-logo {
-  width: 220px;
+  width: 200px;
   height: auto;
   display: block;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
   align-items: center;
 
   padding: 20px 60px;
@@ -30,13 +30,103 @@
 }
 
 .navbar {
+  grid-column: 2;
   display: flex;
-  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
 }
 
 .navbar a {
+  position: relative;
   color: #4c3a69;
   font-weight: 600;
+  text-decoration: none;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #9b6bb5;
+}
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+
+  width: 0;
+  height: 2px;
+
+  background: #c9a25d;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+.header-actions {
+  grid-column: 3;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+  padding: 0;
+
+  border: none;
+  outline: none;
+  appearance: none;
+  background: transparent;
+
+  color: #4c3a60;
+  cursor: pointer;
+
+  transition: color 0.25s ease,
+              background 0.25s ease,
+              transform 0.25s ease;
+}
+
+.icon-button:hover {
+  color: #9b6bb5;
+  background: rgba(155, 107, 181, 0.1);
+  border-radius: 50%;
+  transform: translateY(-2px);
+}
+
+.cart-count {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+
+  border-radius: 50px;
+  background: #c9a25d;
+  color: white;
+
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .hero {
@@ -93,3 +183,4 @@
   border-radius: 20px;
   display: block;
 }
+
