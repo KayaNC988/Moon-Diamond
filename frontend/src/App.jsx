@@ -86,11 +86,11 @@ function App() {
             </div>
 
             <div className='product-info'>
-              <h3>Nom de la toile</h3>
-              <p className='product-size'>40 x 50 cm</p>
-              <p className='product-price'>49,90 €</p>
+              <h3>Prochainement</h3>
+              <p className='product-size'>Nouvelle collection en préparation</p>
+             
 
-              <button className='product-button'>Voir la toile</button>
+              <button className='product-button' disabled>Bientôt disponible</button>
             </div>
           </article>
 
@@ -100,11 +100,11 @@ function App() {
             </div>
 
             <div className='product-info'>
-              <h3>Nom de la toile</h3>
-              <p className='product-size'>50 x 70 cm</p>
-              <p className='product-price'>59,90 €</p>
+              <h3>Prochainement</h3>
+              <p className='product-size'>Nouvelle collection en préparation</p>
+             
 
-              <button className='product-button'>Voir la toile</button>
+              <button className='product-button' disabled>Bientôt disponible</button>
             </div>
           </article>
 
@@ -114,11 +114,11 @@ function App() {
             </div>
 
             <div className='product-info'>
-              <h3>Nom de la toile</h3>
-              <p className='product-size'>60 x 80 cm</p>
-              <p className='product-price'>69,90 €</p>
+              <h3>Prochainement</h3>
+              <p className='product-size'>Nouvelle collection en préparation</p>
+              
 
-              <button className='product-button'>Voir la toile</button>
+              <button className='product-button' disabled>Bientôt disponible</button>
             </div>
           </article>
      
@@ -126,6 +126,41 @@ function App() {
       </section>
 
     </main>
+    <footer className="footer">
+  <div className="footer-content">
+
+    <div className="footer-brand">
+      <img
+        src="/images/logo_Moon-Diamond.png"
+        alt="Logo Moon Diamond"
+        className="footer-logo"
+      />
+      <p>L'univers du Diamond Painting, créé avec passion.</p>
+    </div>
+
+    <div className="footer-links">
+      <h3>Navigation</h3>
+      <a href="#">Accueil</a>
+      <a href="#">Boutique</a>
+      <a href="#">Nos créations</a>
+      <a href="#">À propos</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div className="footer-links">
+      <h3>Informations</h3>
+      <a href="#">Mentions légales</a>
+      <a href="#">Politique de confidentialité</a>
+    </div>
+
+  </div>
+
+  <div className="footer-bottom">
+    <p>© 2026 Moon Diamond — Tous droits réservés.</p>
+  </div>
+</footer>
+    
+   
     </>
   )
   }

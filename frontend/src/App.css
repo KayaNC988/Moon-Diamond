@@ -146,7 +146,8 @@
   min-height: 520px;
   display: flex;
   align-items: center;
-  gap: 60px;
+  justify-content: center;
+  gap: 250px;
   padding: 60px 8%;
   background: linear-gradient(
     135deg,
@@ -200,7 +201,7 @@
 .products-section {
   padding: 70px 8%;
   text-align: center;
-  background-color: #ffffff;
+ background-color: #f5eee4
 }
 
 .products-section h2 {
@@ -218,9 +219,9 @@
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 60px;
   max-width: 1200px;
-  margin: 50px auto 0;
+  margin: 60px auto 0;
 }
 
 .product-card {
@@ -256,27 +257,75 @@
   font-size: 1.3rem;
 }
 
-.product-size {
-  margin: 0 0 8px;
-  color: #8a8189;
-  font-size: 0.95rem;
-}
-
-.product-price {
-  margin: 0 0 18px;
-  color: #6f4b78;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
 .product-button {
-  padding: 11px 20px;
+  padding: 12px 20px;
   border: none;
   border-radius: 25px;
   background: #8d6a9f;
   color: #ffffff;
   font-weight: 600;
   cursor: pointer;
+}
+
+.footer {
+  margin-top: 60px;
+  padding: 50px 10% 20px;
+
+  background: linear-gradient(
+    135deg,
+    #f7e9ff,
+    #fce8f3
+  );
+  color: #6b626d;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+}
+
+.footer-logo {
+  width: 180px;
+  height: auto;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.footer-brand p {
+  margin: 0;
+  max-width: 300px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links h3 {
+  margin: 0 0 10px;
+  color: #6f4b78;
+}
+
+.footer-links a {
+  color: #6b626d;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #8d6a9f;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(111, 75, 120, 0.15);
+  text-align: center;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 900px) {
@@ -350,6 +399,40 @@
     height: 280px;
     max-width: none;
   }
+
+  .hero-image img {
+  width: 100%;
+  height: 280px;
+  max-width: none;
+}
+
+.footer {
+  padding: 40px 20px 20px;
+}
+
+.footer-content {
+  grid-template-columns: 1fr;
+  text-align: center;
+  gap: 35px;
+}
+
+.footer-logo {
+  margin: 0 auto 15px;
+}
+
+.footer-brand p {
+  margin: 0 auto;
+}
+
+.footer-links {
+  align-items: center;
+}
+
+.footer-bottom {
+  margin-top: 30px;
+}
+
+
 }
 
 
