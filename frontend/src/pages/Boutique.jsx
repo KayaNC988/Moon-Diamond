@@ -1,6 +1,7 @@
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useState } from 'react'
+import './Boutique.css'
 
 function Boutique() {
     const [category, setCategory] = useState('all')

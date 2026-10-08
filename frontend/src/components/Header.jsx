@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Heart, UserRound, ShoppingBag } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import './Header.css'
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false)
@@ -20,7 +21,7 @@ function Header() {
   
           <Link to="/">Accueil</Link>
           <Link to="/boutique">Boutique</Link>
-          <a href="#">Nos créations</a>
+          <Link to="/creations">Nos créations</Link>
           <a href="#">A propos</a>
           <a href="#">Contact</a>
        
@@ -51,7 +52,7 @@ function Header() {
 
           <Link to="/" onClick={() => setMenuOpen(false)}>Accueil</Link>
           <Link to="/boutique" onClick={() => setMenuOpen(false)}>Boutique</Link>
-          <a href="#">Nos créations</a>
+          <Link to="/creations" onClick={() => setMenuOpen(false)}>Nos créations</Link>
           <a href="#">A propos</a>
           <a href="#">Contact</a>
        
