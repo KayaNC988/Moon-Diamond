@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Heart, UserRound, ShoppingBag } from 'lucide-react'
+import { Heart, UserRound, ShoppingBag, } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import './Header.css'
 
@@ -22,8 +22,9 @@ function Header() {
           <Link to="/">Accueil</Link>
           <Link to="/boutique">Boutique</Link>
           <Link to="/creations">Nos créations</Link>
-          <a href="#">A propos</a>
-          <a href="#">Contact</a>
+          <Link to="/actualites">Actualités</Link>
+          <Link to="/a-propos">A propos</Link>
+          <Link to="/contact">Contact</Link>
        
       </nav>
 
@@ -32,9 +33,15 @@ function Header() {
         <button className='icon-button'aria-label="Mes favoris">
           <Heart size={21} />
         </button>
-        <button className='icon-button' aria-label="Mon compte">
-          <UserRound size={21} />
-        </button>
+       
+        <Link 
+        to="/connexion"
+        className="icon-button"
+        aria-label="Se connecter à mon compte"
+        >
+        <UserRound size={21} />
+        </Link>
+       
          <button className='icon-button cart-button' aria-label='Mon panier'>
           <ShoppingBag size={21} />
           <span className='cart-count'>0</span>
@@ -53,8 +60,9 @@ function Header() {
           <Link to="/" onClick={() => setMenuOpen(false)}>Accueil</Link>
           <Link to="/boutique" onClick={() => setMenuOpen(false)}>Boutique</Link>
           <Link to="/creations" onClick={() => setMenuOpen(false)}>Nos créations</Link>
-          <a href="#">A propos</a>
-          <a href="#">Contact</a>
+          <Link to="/actualites" onClick={() => setMenuOpen(false)}>Actualités</Link>
+          <Link to="/a-propos" onClick={() => setMenuOpen(false)}>À propos</Link>
+          <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
        
       </nav>
 )}

@@ -20,9 +20,10 @@
       <h3>Navigation</h3>
       <Link to="/">Accueil</Link>
       <Link to="/boutique">Boutique</Link>
-      <a href="/creations">Nos créations</a>
-      <a href="#">À propos</a>
-      <a href="#">Contact</a>
+      <Link to="/creations">Nos créations</Link>
+      <Link to="/actualites">Actualités</Link>
+      <Link to="/a-propos">À propos</Link>
+      <Link to="/contact">Contact</Link>
     </div>
 
     <div className="footer-links">
