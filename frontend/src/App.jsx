@@ -6,6 +6,8 @@ import Actualites from './pages/Actualites'
 import Apropos from './pages/Apropos'
 import Contact from './pages/Contact'
 import Connexion from './pages/Connexion'
+import Inscription from './pages/Inscription'
+import MonCompte from './pages/MonCompte'
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
       <Route path="/a-propos" element={<Apropos />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/connexion" element={<Connexion />} />
+      <Route path="/inscription" element={<Inscription />} />
+      <Route path="/mon-compte" element={<MonCompte />} />
     </Routes>
     </BrowserRouter>
   )

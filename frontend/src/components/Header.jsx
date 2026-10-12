@@ -2,9 +2,11 @@ import { useState } from "react"
 import { Heart, UserRound, ShoppingBag, } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import './Header.css'
+import { useAuth } from '../context/useAuth'
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false)
+    const { isAuthenticated } = useAuth()
 
     return(
         <>
@@ -35,9 +37,9 @@ function Header() {
         </button>
        
         <Link 
-        to="/connexion"
-        className="icon-button"
-        aria-label="Se connecter à mon compte"
+         to={isAuthenticated ? "/mon-compte" : "/connexion"}
+         className="icon-button"
+         aria-label="Mon compte"
         >
         <UserRound size={21} />
         </Link>

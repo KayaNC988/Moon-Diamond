@@ -3,13 +3,38 @@ import './Home.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
+import { useAuth } from '../context/useAuth'
+import { useState, useEffect } from 'react'
+
+
+
 
 function Home() {
 
+  const { isAuthenticated, user } = useAuth()
+  const [showWelcome, setShowWelcome] = useState(isAuthenticated)
+
+useEffect(() => {
+  if (!isAuthenticated) return
+
+  const timer = setTimeout(() => {
+    setShowWelcome(false)
+  }, 10000)
+
+  return () => clearTimeout(timer)
+}, [isAuthenticated])
 
   return (
     <>
     <Header />
+
+    {isAuthenticated && user && showWelcome && (
+      <div className="welcome-message" role="status">
+        Bienvenue sur MoonDiamond, {user.firstname} ! 
+        Vous êtes maintenant connecté.</div>
+    )}
+
+
   
     <main>
       <section className='hero'>

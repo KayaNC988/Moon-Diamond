@@ -1,0 +1,80 @@
+.compte-page {
+  min-height: 600px;
+  padding: 60px 8%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.compte-content {
+  width: 100%;
+  max-width: 650px;
+  padding: 45px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(111, 75, 120, 0.08);
+  text-align: center;
+}
+
+.compte-content h1 {
+  margin-bottom: 20px;
+  font-size: 2.3rem;
+  color: #6f4b78;
+}
+
+.compte-content p {
+  margin-bottom: 18px;
+  color: #6b626d;
+  line-height: 1.6;
+}
+
+.compte-informations {
+  margin: 35px 0;
+  padding: 25px;
+  background: #f9f1f8;
+  border-radius: 15px;
+  text-align: left;
+}
+
+.compte-informations h2 {
+  margin-bottom: 20px;
+  color: #6f4b78;
+}
+
+.compte-logout,
+.compte-login {
+  display: inline-block;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 30px;
+  background: #8d6a9f;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.compte-logout:hover,
+.compte-login:hover {
+  background: #6f4b78;
+}
+
+
+@media (max-width: 600px) {
+  .compte-page {
+    padding: 40px 20px;
+  }
+
+  .compte-content {
+    padding: 30px 20px;
+  }
+
+  .compte-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .compte-informations {
+    padding: 20px;
+  }
+}

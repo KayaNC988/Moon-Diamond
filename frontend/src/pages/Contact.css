@@ -92,7 +92,22 @@
   background: #6f4b78;
 }
 
-/* Responsive */
+.connexion-register {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #6b626d;
+}
+
+.connexion-register a {
+  color: #8d6a9f;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.connexion-register a:hover {
+  text-decoration: underline;
+}
 
 @media (max-width: 600px) {
   .contact-page {
