@@ -1,0 +1,6 @@
+name: Moon Diamond Local
+values:
+  - key: baseUrl
+    value: ''
+  - key: token
+    value: ''

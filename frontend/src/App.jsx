@@ -8,6 +8,7 @@ import Contact from './pages/Contact'
 import Connexion from './pages/Connexion'
 import Inscription from './pages/Inscription'
 import MonCompte from './pages/MonCompte'
+import Favoris from './pages/Favoris'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Route path="/connexion" element={<Connexion />} />
       <Route path="/inscription" element={<Inscription />} />
       <Route path="/mon-compte" element={<MonCompte />} />
+      <Route path="/Favoris" element={<Favoris />} />
     </Routes>
     </BrowserRouter>
   )

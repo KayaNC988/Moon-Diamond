@@ -3,6 +3,7 @@ const Product = require('./product');
 const Order = require('./order');
 const OrderItem = require('./orderItem');
 const ProductImage = require('./productImage');
+const Favorite = require('./favorite');
 
 // Un utilisateur peut avoir plusieurs commandes
 User.hasMany(Order, {
@@ -48,10 +49,34 @@ ProductImage.belongsTo(Product, {
     as: 'product'
 });
 
+// Associations de favoris
+User.hasMany(Favorite, {
+    foreignKey: 'user_Id',
+    as: 'favorites'
+});
+
+Favorite.belongsTo(User, {
+    foreignKey: 'user_id',
+    as: 'user'
+});
+
+Product.hasMany(Favorite, {
+    foreignKey: 'product_id',
+    as: 'favorites'
+});
+
+Favorite.belongsTo(Product, {
+    foreignKey: 'product_id',
+    as: 'product'
+});
+
+
 module.exports = {
     User,
     Product,
     Order,
     OrderItem,
-    ProductImage
-};
+    ProductImage,
+    Favorite
+}
+

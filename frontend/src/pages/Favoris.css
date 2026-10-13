@@ -1,0 +1,225 @@
+.favoris-page {
+  padding: 60px 20px;
+  min-height: 600px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.favoris-header {
+  max-width: 850px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+.favoris-header h1 {
+  margin-bottom: 15px;
+  font-size: 2.5rem;
+  color: #6f4b78;
+}
+
+.favoris-header p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #6b626d;
+}
+
+.favoris-empty,
+.favoris-empty-card {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 45px 40px;
+
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(111, 75, 120, 0.08);
+
+  text-align: center;
+}
+
+.favoris-empty-heart {
+  display: block;
+  margin: 0 auto 25px;
+  color: #8d6a9f;
+}
+
+.favoris-empty h2,
+.favoris-empty-card h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #6f4b78;
+}
+
+.favoris-empty p,
+.favoris-empty-card p {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #6b626d;
+}
+
+.favoris-button {
+  display: inline-block;
+  padding: 14px 28px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: #8d6a9f;
+  color: #ffffff;
+
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.favoris-button:hover {
+  background: #6f4b78;
+  color: #ffffff;
+}
+
+.favoris-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.favoris-card {
+  overflow: hidden;
+
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(111, 75, 120, 0.08);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.favoris-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(111, 75, 120, 0.12);
+}
+
+/* Image produit */
+
+.favoris-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 220px;
+  background: #f8f4f9;
+
+  color: #8d6a9f;
+}
+
+.favoris-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Contenu de la carte */
+
+.favoris-card-content {
+  padding: 25px;
+}
+
+.favoris-card-content h3 {
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  color: #6f4b78;
+}
+
+.favoris-price {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #8d6a9f;
+}
+
+/* Bouton supprimer */
+
+.favoris-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 100%;
+  padding: 12px 20px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: #8d6a9f;
+  color: #ffffff;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.favoris-remove:hover {
+  background: #6f4b78;
+}
+
+.favoris-remove:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+.favoris-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #6b626d;
+}
+
+.favoris-error {
+  max-width: 850px;
+  margin: 25px auto;
+  padding: 15px 20px;
+
+  border-radius: 10px;
+  background: #fff0f0;
+
+  color: #a33a3a;
+  text-align: center;
+}
+
+
+@media (max-width: 600px) {
+  .favoris-page {
+    padding: 40px 20px;
+  }
+
+  .favoris-header h1 {
+    font-size: 2rem;
+  }
+
+  .favoris-header p {
+    font-size: 1rem;
+  }
+
+  .favoris-empty,
+  .favoris-empty-card {
+    padding: 30px 20px;
+  }
+
+  .favoris-empty h2,
+  .favoris-empty-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .favoris-empty p,
+  .favoris-empty-card p {
+    font-size: 1rem;
+  }
+
+  .favoris-grid {
+    grid-template-columns: 1fr;
+  }
+}

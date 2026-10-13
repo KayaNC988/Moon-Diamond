@@ -32,9 +32,12 @@ function Header() {
 
       <div className='header-actions'>
 
-        <button className='icon-button'aria-label="Mes favoris">
+        <Link 
+        to="/favoris" 
+        className="icon-button" 
+        aria-label="Mes favoris">
           <Heart size={21} />
-        </button>
+        </Link>
        
         <Link 
          to={isAuthenticated ? "/mon-compte" : "/connexion"}

@@ -1,0 +1,27 @@
+$kind: http-request
+url: http://localhost:3000/api/auth/login
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"email\": \"test-moon@exemple.com\",\r
+
+    \    \"password\": \"TestMoon2026!\"\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "const response = pm.response.json();\r
+
+      \r
+
+      if (pm.response.code === 200 && response.token) {\r
+
+      \    pm.environment.set(\"token\", response.token);\r
+
+      \    console.log(\"Token JWT enregistré !\");\r
+
+      }"
+    language: text/javascript
+order: 1000

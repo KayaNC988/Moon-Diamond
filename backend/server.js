@@ -8,6 +8,7 @@ const productRoutes = require('./routes/ProductRoutes');
 const authRoutes = require('./routes/AuthRoutes');
 const categoryRoutes = require('./routes/CategoryRoutes');
 const orderRoutes = require('./routes/OrderRoutes');
+const FavoriteRoutes = require('./routes/FavoriteRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -34,6 +35,9 @@ app.use('/api/categories', categoryRoutes);
 
 // Routes de commandes
 app.use('/api/orders', orderRoutes);
+
+// Routes de gestion des favoris des utilisateurs 
+app.use('/api/favorites', FavoriteRoutes);
 
 // Connexion à la base de données puis démarrage du serveur
 sequelize.authenticate()
