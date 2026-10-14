@@ -42,15 +42,17 @@ function Header() {
         <Link 
          to={isAuthenticated ? "/mon-compte" : "/connexion"}
          className="icon-button"
-         aria-label="Mon compte"
-        >
+         aria-label="Mon compte">
         <UserRound size={21} />
         </Link>
        
-         <button className='icon-button cart-button' aria-label='Mon panier'>
+         <Link 
+         to="/panier"
+         className='icon-button cart-button' 
+         aria-label='Mon panier'>
           <ShoppingBag size={21} />
-          <span className='cart-count'>0</span>
-         </button>
+          <span className="cart-count">0</span>
+         </Link>
          
       </div>
       <button

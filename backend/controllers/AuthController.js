@@ -7,6 +7,7 @@ exports.register = async (req, res) => {
     try {
         const { firstname, lastname, email, password } = req.body;
 
+
         // Vérification des champs obligatoires
         if (!firstname || !lastname || !email || !password) {
             return res.status(400).json({

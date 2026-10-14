@@ -1,0 +1,77 @@
+.admin-page {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 0 70px;
+  min-height: 70vh;
+}
+
+.admin-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.admin-header h1 {
+  color: #6f4b78;
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.admin-header p {
+  color: #777;
+  font-size: 1rem;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.admin-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+  border: 1px solid #eee5f0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(111, 75, 120, 0.15);
+}
+
+.admin-card h2 {
+  color: #6f4b78;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.admin-card p {
+  color: #777;
+  line-height: 1.6;
+}
+
+.admin-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .admin-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-page {
+    padding-top: 30px;
+  }
+}

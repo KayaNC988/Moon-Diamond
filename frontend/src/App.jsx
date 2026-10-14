@@ -9,6 +9,10 @@ import Connexion from './pages/Connexion'
 import Inscription from './pages/Inscription'
 import MonCompte from './pages/MonCompte'
 import Favoris from './pages/Favoris'
+import Panier from './pages/Panier'
+import Admin from "./pages/admin/Admin"
+import AdminRoute from "./components/AdminRoute"
+import AdminProduits from "./pages/admin/AdminProduits"
 
 
 function App() {
@@ -24,7 +28,10 @@ function App() {
       <Route path="/connexion" element={<Connexion />} />
       <Route path="/inscription" element={<Inscription />} />
       <Route path="/mon-compte" element={<MonCompte />} />
-      <Route path="/Favoris" element={<Favoris />} />
+      <Route path="/favoris" element={<Favoris />} />
+      <Route path="/panier" element={<Panier />} />
+      <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
+      <Route path="/admin/produits" element={<AdminRoute><AdminProduits /></AdminRoute>} />
     </Routes>
     </BrowserRouter>
   )

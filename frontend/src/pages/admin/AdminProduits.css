@@ -1,0 +1,81 @@
+/* Bouton Ajouter un produit */
+.admin-add-button {
+  background: #8d6a9f;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-add-button:hover {
+  background: #6f4b78;
+  transform: translateY(-2px);
+}
+
+/* Espacement autour du bouton */
+.admin-products-actions {
+  margin-bottom: 25px;
+}
+
+/* Bouton Annuler */
+.admin-cancel-button {
+  background: #f5f0f7;
+  color: #6f4b78;
+  border: 1px solid #d8c7df;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-cancel-button:hover {
+  background: #e9dff0;
+}
+
+.admin-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.admin-form-group label {
+  font-weight: 600;
+  color: #6f4b78;
+}
+
+.admin-form-group input {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.admin-form-group input:focus {
+  outline: none;
+  border-color: #8d6a9f;
+}
+
+.admin-form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.admin-form-group textarea:focus {
+  outline: none;
+  border-color: #8d6a9f;
+}
