@@ -13,7 +13,7 @@ import Panier from './pages/Panier'
 import Admin from "./pages/admin/Admin"
 import AdminRoute from "./components/AdminRoute"
 import AdminProduits from "./pages/admin/AdminProduits"
-
+import ApercuProduit from './pages/admin/ApercuProduit'
 
 function App() {
   return (
@@ -32,6 +32,7 @@ function App() {
       <Route path="/panier" element={<Panier />} />
       <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
       <Route path="/admin/produits" element={<AdminRoute><AdminProduits /></AdminRoute>} />
+      <Route path="/admin/produits/apercu" element={<AdminRoute><ApercuProduit /></AdminRoute>}/>
     </Routes>
     </BrowserRouter>
   )
