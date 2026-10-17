@@ -16,6 +16,17 @@ function AdminProduits() {
     category: "",
   });
 
+  const convertirImage = (fichier) => {
+    return new Promise((resolve, reject) => {
+      const lecteur = new FileReader();
+
+      lecteur.onload = () => resolve(lecteur.result);
+      lecteur.onerror = () => reject(lecteur.error);
+
+      lecteur.readAsDataURL(fichier);
+    });
+  };
+
   return (
     <>
       <Header />
@@ -36,6 +47,7 @@ function AdminProduits() {
           </button>
         </div>
 
+
         {afficherFormulaire && (
           <div className="admin-card">
             <h2>💎 Ajouter un nouveau produit</h2>
@@ -55,7 +67,7 @@ function AdminProduits() {
                 required
               />
             </div>
-            vous
+
             <div className="admin-form-group">
               <label htmlFor="description">Description du produit</label>
 
@@ -201,12 +213,39 @@ function AdminProduits() {
             <button
               type="button"
               className="admin-preview-button"
-              onClick={() => {
-                sessionStorage.setItem(
-                  "apercuProduit",
-                  JSON.stringify(produit),
-                );
-                window.open("/admin/produits/apercu", "_blank");
+              onClick={async () => {
+                const onglet = window.open("", "_blank");
+
+                if (!onglet) {
+                  alert(
+                    "Autorise les fenêtres pop-up pour afficher la prévisualisation.",
+                  );
+                  return;
+                }
+
+                try {
+                  const imagesConverties = await Promise.all(
+                    images.map((image) => convertirImage(image)),
+                  );
+
+                  onglet.sessionStorage.setItem(
+                    "apercuProduit",
+                    JSON.stringify(produit),
+                  );
+
+                  onglet.sessionStorage.setItem(
+                    "apercuImages",
+                    JSON.stringify(imagesConverties),
+                  );
+
+                  onglet.location.href = "/admin/produits/apercu";
+                } catch (erreur) {
+                  console.error("Erreur de prévisualisation :", erreur);
+                  onglet.close();
+                  alert(
+                    "Impossible de préparer la prévisualisation des images.",
+                  );
+                }
               }}
             >
               Prévisualiser

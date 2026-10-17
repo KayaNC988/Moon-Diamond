@@ -237,8 +237,96 @@
   min-width: 0;
 }
 
+/* Photo principale de la prévisualisation */
+.apercu-image-principale {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 25px;
+}
+
+.apercu-image-principale img {
+  display: block;
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+  border-radius: 12px;
+  background-color: #faf7fc;
+}
+
+/* Flèches de navigation des photos */
+.apercu-fleche {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #6f4b78;
+
+  border: 1px solid #e9dff0;
+  border-radius: 50%;
+
+  font-size: 22px;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+}
+
+/* Flèche gauche */
+.apercu-fleche-gauche {
+  left: 10px;
+}
+
+/* Flèche droite */
+.apercu-fleche-droite {
+  right: 10px;
+}
+
+/* Effet au survol */
+.apercu-fleche:hover {
+  background-color: #e9dff0;
+}
+
+/* Accessibilité clavier */
+.apercu-fleche:focus-visible {
+  outline: 3px solid #8d6a9f;
+  outline-offset: 3px;
+}
+
+/* Compteur de photos */
+.apercu-compteur {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: rgba(255, 255, 255, 0.9);
+  color: #6f4b78;
+
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.aperecu-produit-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
 @media (max-width: 600px) {
   .admin-dimensions {
     grid-template-columns: 1fr;
+    gap: 25px;
   }
 }
