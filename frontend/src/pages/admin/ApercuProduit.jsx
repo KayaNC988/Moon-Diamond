@@ -1,5 +1,6 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+
 import { useState } from "react";
 import "./AdminProduits.css";
 
@@ -7,6 +8,60 @@ function ApercuProduit() {
   const produit = JSON.parse(sessionStorage.getItem("apercuProduit") || "{}");
   const images = JSON.parse(sessionStorage.getItem("apercuImages") || "[]");
   const [imageActive, setImageActive] = useState(0);
+  const session = JSON.parse(
+    sessionStorage.getItem("moonDiamondSession") || "null"
+  );
+  const token = session?.token || null;
+  
+  const publierProduit = async () => {
+    if (!token) {
+    alert("Vous devez être connecté pour accéder à cette page.");
+    return;
+  }
+    const donneesProduit = {
+  name: produit.name,
+  description: produit.description,
+  price: Number(produit.price),
+  stock: Number(produit.stock),
+  width_cm: Number(produit.largeur),
+  height_cm: Number(produit.hauteur),
+  category_id: {
+    toiles: 1,
+    kits: 2,
+    accessoires: 3,
+  }[produit.category],
+  status: "available",
+};
+const formData = new FormData();
+Object.entries(donneesProduit).forEach(([key, value]) => {
+  formData.append(key, value);
+});
+for (let i = 0; i < images.length; i++) {
+  const response = await fetch(images[i]);
+  const blob = await response.blob();
+  const extension = blob.type === "image/png" ? ".png" : blob.type === "image/webp" ? ".webp" : ".jpg";
+  formData.append("images", blob, `image${i + 1}${extension}`);
+}
+try {
+  const response = await fetch("http://localhost:3000/api/products", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+    },
+    body: formData,
+  });
+
+  if (!response.ok) {
+    throw new Error("Erreur lors de la publication du produit");
+  }
+
+  const result = await response.json();
+  console.log("Produit publié avec succès :", result);
+} catch (error) {
+  console.error("Erreur lors de la publication du produit :", error);
+  alert("Une erreur est survenue lors de la publication du produit.");
+}
+  };
   return (
     <>
       <Header />
@@ -67,7 +122,7 @@ function ApercuProduit() {
           <div className="apercu-informations">             
           <h2>{produit.name || "produit sans nom"}</h2>
           <p>{produit.description}</p>
-          <p>
+          <p className="apercu-prix">
             <strong>
               {produit.price
                 ? `${Number(produit.price).toFixed(2)} €`
@@ -97,11 +152,24 @@ function ApercuProduit() {
           </div>
           </div>
         </div>
+        <div className="apercu-actions">
+          <button type="button" className="apercu-btn-modifier"
+          onClick={() => window.close()}>Modifier</button>
+
+      
+
+          <button type="button" className="apercu-btn-publier" onClick={publierProduit}>
+            Valider et publier
+          </button>
+
+          <button type="button" className="apercu-btn-annuler">Annuler</button>
+        </div>
       </main>
 
       <Footer />
     </>
   );
 }
+
 
 export default ApercuProduit;

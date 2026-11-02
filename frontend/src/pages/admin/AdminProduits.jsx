@@ -10,7 +10,7 @@ function AdminProduits() {
     name: "",
     description: "",
     largeur: "",
-    longueur: "",
+    hauteur: "",
     price: "",
     stock: "",
     category: "",

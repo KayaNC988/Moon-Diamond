@@ -1,4 +1,8 @@
 const { Product, ProductImage }= require('../models');
+const ProducImage = require('../models/productImage');
+const sequelize = require('../config/database');
+const fs = require('fs');
+const path = require('path');
 
 // Récupérer tous les produits
 const getAllProducts = async (req, res) => {
@@ -30,6 +34,7 @@ const getProductById = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
+    let transaction;
     try {
         const {
             name,
@@ -42,11 +47,27 @@ const createProduct = async (req, res) => {
             status,
             category_id
         } = req.body;
+        const slugGenere = name
+        ?.toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
+
+        const produitExistant = await Product.findOne({
+            where: { slug: slugGenere }
+        });
+        if (produitExistant) {
+            return res.status(409).json({
+                error: "Un produit portant ce nom existe déjà."
+            });
+        }
 
         // Vérification des champs obligatoires
         if (
             !name ||
-            !slug ||
+            !slugGenere ||
             !description ||
             price === undefined ||
             width_cm === undefined ||
@@ -58,9 +79,11 @@ const createProduct = async (req, res) => {
             });
         }
 
+        transaction = await sequelize.transaction();
+
         const product = await Product.create({
             name,
-            slug,
+            slug: slugGenere,
             description,
             price,
             stock: stock ?? 1,
@@ -68,7 +91,20 @@ const createProduct = async (req, res) => {
             height_cm,
             status: status ?? 'draft',
             category_id
-        });
+        }, { transaction });
+    
+
+        if (req.files && req.files.length > 0) {
+            const imagesProduit = req.files.map((file, index) => ({
+                image_url: `/uploads/${file.filename}`,
+                product_id: product.id,
+                alt_text: `${name} - Image ${index + 1}`,
+                position: index
+            }));
+            await ProductImage.bulkCreate(imagesProduit, { transaction });
+        }
+
+        await transaction.commit();
 
         return res.status(201).json({
             message: 'Produit créé avec succès',
@@ -76,12 +112,25 @@ const createProduct = async (req, res) => {
         });
 
     } catch (error) {
+        if (transaction && !transaction.finished) {
+            await transaction.rollback();
+        }
+            if (req.files && req.files.length > 0) {
+                for (const file of req.files) {
+                    try {
+                        fs.unlinkSync(path.join(__dirname, '../uploads/', file.filename));
+                    } catch (err) {
+                        console.error("Erreur lors de la suppression du fichier :", err);
+                    }
+                }
+            }
+        
         console.error(error);
 
         return res.status(500).json({
             error: 'Erreur lors de la création du produit'
         });
-    }
+}
 };
 
 

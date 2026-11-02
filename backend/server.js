@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 
 const sequelize = require('./config/database');
@@ -16,6 +17,9 @@ const PORT = process.env.PORT || 3000;
 // Middlewares
 app.use(cors());
 app.use(express.json());
+
+// Accés aus images des produits 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Route de test
 app.get('/', (req, res) => {
